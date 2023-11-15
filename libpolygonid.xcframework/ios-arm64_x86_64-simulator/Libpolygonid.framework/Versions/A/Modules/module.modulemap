@@ -1,0 +1,8 @@
+framework module "Libpolygonid" {
+	header "ref.h"
+    header "Polygonid.objc.h"
+    header "Universe.objc.h"
+    header "Libpolygonid.h"
+
+    export *
+}
