@@ -9,7 +9,7 @@ ios-arm64:
 	SDK=iphoneos \
 	CC=$(PWD)/clangwrap.sh \
 	CGO_CFLAGS="-fembed-bitcode" \
-	go build -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios.a ./cmd/polygonid
+	go build -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-arm64.a ./cmd/polygonid
 
 
 ios-simulator-x86_64:

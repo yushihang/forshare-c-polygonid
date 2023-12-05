@@ -1,3 +1,5 @@
 .idea/
 build/
 examples/a.out
+output
+ios/
