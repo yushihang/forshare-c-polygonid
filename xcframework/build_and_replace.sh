@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 current_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "current_directory:$current_directory"
 # enter project directory
