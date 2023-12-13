@@ -9,7 +9,7 @@ ios-arm64:
 	SDK=iphoneos \
 	CC=$(PWD)/clangwrap.sh \
 	CGO_CFLAGS="-fembed-bitcode" \
-	go build -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-arm64.a ./cmd/polygonid
+	go build -ldflags "-s -w" -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-arm64.a ./cmd/polygonid
 
 
 ios-simulator-x86_64:
@@ -20,7 +20,7 @@ ios-simulator-x86_64:
 	SDK=iphonesimulator \
 	CC=$(PWD)/clangwrap.sh \
 	CGO_CFLAGS="-fembed-bitcode" \
-	go build -tags ios -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-simulator-x86_64.a ./cmd/polygonid
+	go build -ldflags "-s -w" -tags ios -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-simulator-x86_64.a ./cmd/polygonid
 
 ios-simulator-arm64:
 	GOOS=ios \
@@ -30,7 +30,7 @@ ios-simulator-arm64:
 	CC=$(PWD)/clangwrap1.sh \
 	SDK=iphonesimulator \
 	CGO_CFLAGS="-fembed-bitcode" \
-	go build -tags ios -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-simulator-arm64.a ./cmd/polygonid
+	go build -ldflags "-s -w" -tags ios -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-ios-simulator-arm64.a ./cmd/polygonid
 
 darwin-arm64:
 	GOOS=darwin \
@@ -39,7 +39,7 @@ darwin-arm64:
 	CLANGARCH=arm64 \
 	go build -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-darwin-arm64.a ./cmd/polygonid
 
-ios: ios-arm64 ios-simulator
+ios: ios-arm64 ios-simulator-x86_64
 	lipo $(IOS_OUT)/libpolygonid-ios.a $(IOS_OUT)/libpolygonid-ios-simulator.a -create -output $(IOS_OUT)/libpolygonid.go get golang.org/x/mobile/cmd/gomobile@nonea
 	cp $(IOS_OUT)/libpolygonid-ios.h $(IOS_OUT)/libpolygonid.h
 

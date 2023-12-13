@@ -72,7 +72,6 @@ for lib_tuple in "${lib_tuple_array[@]}"; do
 
     cp "$staticlib" "${elements[1]}/$libName"
     
-    # 在这里进行其他处理...
 done
 
 xcframework_name="polygonid"

@@ -22,6 +22,6 @@ export IPHONEOS_DEPLOYMENT_TARGET=5.1
 # cmd/cgo doesn't support llvm-gcc-4.2, so we have to use clang.
 CLANG=`xcrun --sdk $SDK --find clang`
 
-exec "$CLANG" -target "$TARGET" -isysroot "$SDK_PATH" "$@"
+exec "$CLANG" -Os -target "$TARGET" -isysroot "$SDK_PATH" "$@"
 
 #xcodebuild -create-xcframework -library libpolygonid-ios.a -headers ./header  -library libpolygonid-ios-simulator.a -headers ./header  -output polygonid.xcframework
