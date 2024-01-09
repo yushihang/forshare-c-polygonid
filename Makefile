@@ -39,7 +39,7 @@ darwin-arm64:
 	CLANGARCH=arm64 \
 	go build -buildmode=c-archive -o $(IOS_OUT)/libpolygonid-darwin-arm64.a ./cmd/polygonid
 
-ios: ios-arm64 ios-simulator-x86_64
+iosmake: ios-arm64 ios-simulator-x86_64
 	lipo $(IOS_OUT)/libpolygonid-ios.a $(IOS_OUT)/libpolygonid-ios-simulator.a -create -output $(IOS_OUT)/libpolygonid.go get golang.org/x/mobile/cmd/gomobile@nonea
 	cp $(IOS_OUT)/libpolygonid-ios.h $(IOS_OUT)/libpolygonid.h
 

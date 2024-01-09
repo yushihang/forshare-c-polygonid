@@ -358,6 +358,9 @@ func findProofByType(w3cCred verifiable.W3CCredential,
 	proofType verifiable.ProofType) verifiable.CredentialProof {
 
 	for _, p := range w3cCred.Proof {
+		fmt.Println("findProofByType w3cCred ProofType:", p.ProofType())
+
+		fmt.Println("findProofByType proofType:", proofType)
 		if p.ProofType() == proofType {
 			return p
 		}
@@ -421,6 +424,8 @@ func AtomicQueryMtpV2InputsFromJson(ctx context.Context, cfg EnvConfig,
 	if circuitID != string(circuits.AtomicQueryMTPV2CircuitID) {
 		return out, errors.New("wrong circuit")
 	}
+
+	fmt.Println("obj.VerifiableCredentials", string(obj.VerifiableCredentials))
 	var w3cCred verifiable.W3CCredential
 	err = json.Unmarshal(obj.VerifiableCredentials, &w3cCred)
 	if err != nil {
@@ -1106,6 +1111,9 @@ func claimWithMtpProofFromObj(ctx context.Context, cfg EnvConfig,
 	var err error
 	var proofI verifiable.CredentialProof
 	var issuerDID *w3c.DID
+
+	//print a string
+	
 
 	if proofI = findProofByType(w3cCred,
 		verifiable.Iden3SparseMerkleTreeProofType); proofI != nil {
