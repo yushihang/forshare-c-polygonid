@@ -146,6 +146,10 @@ func resolveRevocationStatusFromIssuerService(ctx context.Context,
 	if err != nil {
 		return out, err
 	}
+
+	httpReq.Header.Set("Cookie", "1865OH=True")
+	httpReq.Header.Set("1865OH", "True")
+
 	httpResp, err := httpClient.Do(httpReq)
 	if err != nil {
 		return out, err
