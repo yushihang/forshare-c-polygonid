@@ -54,28 +54,28 @@ android-armeabi-v7a:
 	GOARCH=arm \
 	CGO_ENABLED=1 \
 	CC=$(ANDROID_NDK_HOME)/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi21-clang \
-	go build -ldflags="-s -w"  -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/armeabi-v7a/libpolygonid.so ./cmd/polygonid
+	go build -ldflags="-s -w" -x -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/armeabi-v7a/libpolygonid.so ./cmd/polygonid
 
 android-arm64-v8a:
 	GOOS=android \
 	GOARCH=arm64 \
 	CGO_ENABLED=1 \
 	CC=$(ANDROID_NDK_HOME)/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang \
-	go build -ldflags="-s -w"  -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/arm64-v8a/libpolygonid.so ./cmd/polygonid
+	go build -ldflags="-s -w" -x -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/arm64-v8a/libpolygonid.so ./cmd/polygonid
 
 android-x86:
 	GOOS=android \
 	GOARCH=386 \
 	CGO_ENABLED=1 \
 	CC=$(ANDROID_NDK_HOME)/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android21-clang \
-	go build -ldflags="-s -w"  -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/x86/libpolygonid.so ./cmd/polygonid
+	go build -ldflags="-s -w" -x -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/x86/libpolygonid.so ./cmd/polygonid
 
 android-x86-64:
 	GOOS=android \
 	GOARCH=amd64 \
 	CGO_ENABLED=1 \
 	CC=$(ANDROID_NDK_HOME)/toolchains/llvm/prebuilt/darwin-x86_64/bin/x86_64-linux-android21-clang \
-	go build -ldflags="-s -w" -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/x86-64/libpolygonid.so ./cmd/polygonid
+	go build -ldflags="-s -w" -x -buildmode=c-shared -o $(ANDROID_OUT)/jnilibs/x86-64/libpolygonid.so ./cmd/polygonid
 
 android: android-armeabi-v7a android-arm64-v8a android-x86 android-x86-64
 
