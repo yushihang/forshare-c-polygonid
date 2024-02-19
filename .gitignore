@@ -4,3 +4,5 @@ examples/a.out
 output
 ios/
 libpolygonid.a
+android
+polygonid.xcframework.zip
