@@ -49,6 +49,8 @@ libName="libpolygonid.a"
 
 lib_tuple_array=("ios-simulator-arm64:$output_path_iphone_simulator_arm64" "ios-simulator-x86_64:$output_path_iphone_simulator_x86_64" "ios-arm64:$output_path_iphoneos_arm64")
 
+
+
 for lib_tuple in "${lib_tuple_array[@]}"; do
     cd "$parent_directory"
     # 按特殊字符拆分元组
@@ -80,5 +82,8 @@ xcframework_name="polygonid"
 lipo -create "$output_path_iphone_simulator_x86_64/$libName" "$output_path_iphone_simulator_arm64/$libName" -output "$output_path_iphone_simulator_universal/$libName"
 cp "$output_path_iphone_simulator_universal/$libName" "$framework_path/$xcframework_name.xcframework/ios-arm64_x86_64-simulator/$libName"
 cp "$output_path_iphoneos_arm64/$libName" "$framework_path/$xcframework_name.xcframework/ios-arm64/$libName"
+
+
+cp -rf "$cgo_output_path/libpolygonid-ios-arm64.h" "$framework_path/$xcframework_name.xcframework/Headers/libpolygonid-ios.h"
 
 echo "Finished"
